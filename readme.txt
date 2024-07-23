@@ -331,6 +331,79 @@ C:\Users\DavidHolberton\sbprojs\asynchcapp>findstr -i "async" build.gradle
 
 C:\Users\DavidHolberton\sbprojs\asynchcapp>
 
+
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+7:48 AM 7/21/2024
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+cd C:\Users\DavidHolberton\sbprojs\asynchcapp
+.\gradlew --version
+.\gradlew dependencies
+.\gradlew dependencies | findstr /i "async"
+.\gradlew dependencies | findstr /i "async" | sort /unique
+.\gradlew clean
+.\gradlew bootJar
+.\gradlew bootRun
+dir build\libs
+jar tvf build\libs\asynchcapp-0.0.1-SNAPSHOT.jar | findstr -i "async"
+jar tvf build\libs\asynchcapp-0.0.1-SNAPSHOT.jar | findstr -i "netty"
+
+java -jar build\libs\asynchcapp-0.0.1-SNAPSHOT.jar
+java  -Djavax.net.debug=ssl:handshake  ^
+      -jar build\libs\asynchcapp-0.0.1-SNAPSHOT.jar
+
+java  -Djavax.net.debug=ssl:handshake  ^
+      -jar build\libs\asynchcapp-0.0.1-SNAPSHOT.jar > startspringio-20240721a.txt 2>&1
+java  -Djavax.net.debug=ssl:handshake  ^
+      -Dorg.asynchttpclient.enabledProtocols=TLSv1.3  ^
+      -jar build\libs\asynchcapp-0.0.1-SNAPSHOT.jar > startspringio-20240721b.txt 2>&1
+java  -Djavax.net.debug=ssl:handshake  ^
+      -Dorg.asynchttpclient.enabledProtocols=TLSv1.2  ^
+      -jar build\libs\asynchcapp-0.0.1-SNAPSHOT.jar > startspringio-20240721c.txt 2>&1
+java  -Djavax.net.debug=ssl:handshake  ^
+      -Dorg.asynchttpclient.enabledProtocols=TLSv1.3  ^
+      -Dorg.asynchttpclient.enabledCipherSuites=TLS_AES_256_GCM_SHA384  ^
+      -jar build\libs\asynchcapp-0.0.1-SNAPSHOT.jar > startspringio-20240721d.txt 2>&1
+java  -Djavax.net.debug=ssl:handshake  ^
+      -Dorg.asynchttpclient.enabledProtocols=TLSv1.3,TLSv1.2  ^
+      -jar build\libs\asynchcapp-0.0.1-SNAPSHOT.jar > startspringio-20240721e.txt 2>&1
+
+C:\Users\DavidHolberton\sbprojs\asynchcapp>findstr -i "org.asynchttpclient:async-http-client" build.gradle
+  implementation 'org.asynchttpclient:async-http-client:2.12.3'
+  // implementation 'org.asynchttpclient:async-http-client:2.1.1'
+
+C:\Users\DavidHolberton\sbprojs\asynchcapp>
+C:\Users\DavidHolberton\sbprojs\asynchcapp>jar tvf build\libs\asynchcapp-0.0.1-SNAPSHOT.jar | findstr -i "async"
+     0 Sun Jul 21 12:14:02 EDT 2024 BOOT-INF/classes/ashburncode/asynchcapp/
+  5603 Sun Jul 21 12:14:02 EDT 2024 BOOT-INF/classes/ashburncode/asynchcapp/AsynchcappApplication.class
+451655 Thu Apr 25 12:03:30 EDT 2024 BOOT-INF/lib/async-http-client-2.12.3.jar
+  9939 Thu Apr 25 12:03:30 EDT 2024 BOOT-INF/lib/async-http-client-netty-utils-2.12.3.jar
+
+C:\Users\DavidHolberton\sbprojs\asynchcapp>jar tvf build\libs\asynchcapp-0.0.1-SNAPSHOT.jar | findstr -i "netty"
+  9939 Thu Apr 25 12:03:30 EDT 2024 BOOT-INF/lib/async-http-client-netty-utils-2.12.3.jar
+ 25648 Thu Jul 18 11:36:06 EDT 2024 BOOT-INF/lib/netty-handler-proxy-4.1.111.Final.jar
+667603 Thu Jul 18 11:36:06 EDT 2024 BOOT-INF/lib/netty-codec-http-4.1.111.Final.jar
+ 21842 Thu Apr 25 12:03:30 EDT 2024 BOOT-INF/lib/netty-reactive-streams-2.0.4.jar
+570352 Thu Jul 18 11:36:06 EDT 2024 BOOT-INF/lib/netty-handler-4.1.111.Final.jar
+121027 Thu Jul 18 11:36:06 EDT 2024 BOOT-INF/lib/netty-codec-socks-4.1.111.Final.jar
+ 39782 Thu Jul 18 11:36:06 EDT 2024 BOOT-INF/lib/netty-transport-native-epoll-4.1.111.Final-linux-x86_64.jar
+ 25080 Sun Jul 21 12:07:02 EDT 2024 BOOT-INF/lib/netty-transport-native-kqueue-4.1.111.Final-osx-x86_64.jar
+352122 Thu Jul 18 11:36:06 EDT 2024 BOOT-INF/lib/netty-codec-4.1.111.Final.jar
+147378 Thu Jul 18 11:36:06 EDT 2024 BOOT-INF/lib/netty-transport-classes-epoll-4.1.111.Final.jar
+108540 Sun Jul 21 12:07:02 EDT 2024 BOOT-INF/lib/netty-transport-classes-kqueue-4.1.111.Final.jar
+ 44093 Thu Jul 18 11:36:06 EDT 2024 BOOT-INF/lib/netty-transport-native-unix-common-4.1.111.Final.jar
+517953 Thu Jul 18 11:36:06 EDT 2024 BOOT-INF/lib/netty-transport-4.1.111.Final.jar
+336397 Thu Jul 18 11:36:06 EDT 2024 BOOT-INF/lib/netty-buffer-4.1.111.Final.jar
+ 37840 Thu Jul 18 11:36:06 EDT 2024 BOOT-INF/lib/netty-resolver-4.1.111.Final.jar
+694402 Thu Jul 18 11:36:06 EDT 2024 BOOT-INF/lib/netty-common-4.1.111.Final.jar
+
+C:\Users\DavidHolberton\sbprojs\asynchcapp>
+
+
+
+
 
 
